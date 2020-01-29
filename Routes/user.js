@@ -49,7 +49,9 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', auth, async (req, res) => {
-    User.findAll().then(users => {
+    const attributes = ['id', 'name', 'email'];
+
+    User.findAll({ attributes }).then(users => {
         return res.json(users);
     });
 });
